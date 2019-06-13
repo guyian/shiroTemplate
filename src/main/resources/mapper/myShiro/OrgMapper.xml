@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yw.shirotemplate.myShiro.mapper.OrgMapper">
+
+    <resultMap id="resultMap" type="com.yw.shirotemplate.myShiro.entity.Org">
+        <id property="id" column="id"/>
+        <result property="orgCode" column="orgCode"/>
+        <result property="orgName" column="orgName"/>
+    </resultMap>
+
+    <select id="listOrg" parameterType="String" resultType="String">
+		SELECT o.orgName
+        FROM user u
+        LEFT JOIN user_role ur ON u.id = ur.userId
+        LEFT JOIN role r ON ur.roleId = r.id
+        LEFT JOIN org_role ore ON r.id = ore.roleId
+        LEFT JOIN org o ON ore.roleId = o.id
+        WHERE u.userCode = #{userCode}
+	</select>
+
+</mapper>
