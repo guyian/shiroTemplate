@@ -52,6 +52,7 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
                 }
             }
         }
+        //主要用于拦截所有非匿名请求
         //获取请求头token
         AuthenticationToken token = this.createToken(servletRequest, servletResponse);
         if (token.getPrincipal() == null) {
