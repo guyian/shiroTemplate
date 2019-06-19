@@ -51,24 +51,23 @@ public class ShiroConfiguration {
     }
 
     @Bean(name = "defaultSessionStorageEvaluator")
-    public DefaultSessionStorageEvaluator defaultSessionStorageEvaluator () {
+    public DefaultSessionStorageEvaluator defaultSessionStorageEvaluator() {
         DefaultSessionStorageEvaluator defaultSessionStorageEvaluator = new DefaultSessionStorageEvaluator();
         defaultSessionStorageEvaluator.setSessionStorageEnabled(false);
         return defaultSessionStorageEvaluator;
     }
 
     @Bean(name = "subjectDAO")
-    public DefaultSubjectDAO subjectDAO(@Qualifier("defaultSessionStorageEvaluator")DefaultSessionStorageEvaluator defaultSessionStorageEvaluator) {
+    public DefaultSubjectDAO subjectDAO(@Qualifier("defaultSessionStorageEvaluator") DefaultSessionStorageEvaluator defaultSessionStorageEvaluator) {
         DefaultSubjectDAO defaultSubjectDAO = new DefaultSubjectDAO();
         defaultSubjectDAO.setSessionStorageEvaluator(defaultSessionStorageEvaluator);
         return defaultSubjectDAO;
     }
 
 
-
     @Bean(name = "securityManager")
-    public SecurityManager securityManager(@Qualifier("myRealm")MyRealm myRealm, @Qualifier("subjectDAO")DefaultSubjectDAO
-            subjectDAO, @Qualifier("sessionManager")DefaultSessionManager sessionManager, @Qualifier("subjectFactory")StatelessDefaultSubjectFactory subjectFactory) {
+    public SecurityManager securityManager(@Qualifier("myRealm") MyRealm myRealm, @Qualifier("subjectDAO") DefaultSubjectDAO
+            subjectDAO, @Qualifier("sessionManager") DefaultSessionManager sessionManager, @Qualifier("subjectFactory") StatelessDefaultSubjectFactory subjectFactory) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(myRealm);
         securityManager.setSubjectDAO(subjectDAO);
@@ -83,7 +82,7 @@ public class ShiroConfiguration {
     }
 
     @Bean
-    public FilterRegistrationBean delegatingFilterProxy(){
+    public FilterRegistrationBean delegatingFilterProxy() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
         DelegatingFilterProxy proxy = new DelegatingFilterProxy();
         proxy.setTargetFilterLifecycle(true);
@@ -93,7 +92,7 @@ public class ShiroConfiguration {
     }
 
     @Bean(name = "shiroFilter")
-    public ShiroFilterFactoryBean shiroFilter(@Qualifier("securityManager")SecurityManager securityManager, @Qualifier("jwtFilter")JWTFilter jwtFilter) {
+    public ShiroFilterFactoryBean shiroFilter(@Qualifier("securityManager") SecurityManager securityManager, @Qualifier("jwtFilter") JWTFilter jwtFilter) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         //
@@ -110,6 +109,7 @@ public class ShiroConfiguration {
 
     /**
      * 加入下面2个 可以在controller层使用shiro注解
+     *
      * @return
      */
     @Bean(name = "advisorAutoProxyCreator")

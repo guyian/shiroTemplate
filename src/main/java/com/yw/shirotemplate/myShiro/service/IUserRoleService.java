@@ -2,7 +2,7 @@ package com.yw.shirotemplate.myShiro.service;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author Chengx

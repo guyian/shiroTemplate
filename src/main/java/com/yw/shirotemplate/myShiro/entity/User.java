@@ -1,15 +1,15 @@
 package com.yw.shirotemplate.myShiro.entity;
 
-import java.io.Serializable;
-import java.util.List;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author Chengx
@@ -22,7 +22,7 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer id ;
+    private Integer id;
 
     /**
      * code 用于登录

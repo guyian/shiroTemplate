@@ -31,11 +31,10 @@ import java.io.IOException;
 @Component
 public class JWTFilter extends BasicHttpAuthenticationFilter {
 
-    @Value("${jwt.anonymous.urls}")
-    private String anonymousStr;
-
     @Autowired
     RedisTemplate redisTemplate;
+    @Value("${jwt.anonymous.urls}")
+    private String anonymousStr;
     @Autowired
     private IUserService userService;
 

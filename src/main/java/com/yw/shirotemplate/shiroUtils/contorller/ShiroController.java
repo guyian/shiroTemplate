@@ -48,7 +48,7 @@ public class ShiroController {
 //            result.put("msg", "验证码错误！");
 //            return result;
 //        }
-        System.err.println("用户Code为："+userInfo.getUserCode());
+        System.err.println("用户Code为：" + userInfo.getUserCode());
         User vo = this.userService.findByUserCode(userInfo.getUserCode());
         if (null != vo && vo.getUserPwd().equals(userInfo.getUserPwd())) {
             String tokenStr = JWTUtil.sign(userInfo.getUserCode(), userInfo.getUserPwd());

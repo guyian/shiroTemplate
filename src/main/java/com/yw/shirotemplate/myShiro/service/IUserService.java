@@ -13,7 +13,7 @@ import java.util.Map;
  * @author Chengx
  * @since 2019-06-12
  */
-public interface IUserService{
+public interface IUserService {
 
     /**
      * 通过 用户code获取用户信息

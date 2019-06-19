@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author Chengx
@@ -22,7 +22,7 @@ public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer id ;
+    private Integer id;
 
     /**
      * 角色 code

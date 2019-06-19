@@ -24,10 +24,9 @@ import java.util.Set;
 public class MyRealm extends AuthorizingRealm {
 
     @Autowired
-    private IUserService userService;
-
-    @Autowired
     RedisTemplate redisTemplate;
+    @Autowired
+    private IUserService userService;
 
     /**
      * 大坑！，必须重写此方法，不然Shiro会报错
@@ -85,9 +84,9 @@ public class MyRealm extends AuthorizingRealm {
         } else if (exception != null && exception instanceof TokenExpiredException) {
             throw new AuthenticationException("Token已过期(Token expired.)！");
             //被T
-        } else if(StringUtils.isEmpty(redisUserInfo)){
+        } else if (StringUtils.isEmpty(redisUserInfo)) {
             throw new AuthenticationException("Token已失效(Token invalid.)！");
-        }else {
+        } else {
             AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(token, token, vo.getUserCode());
             return authcInfo;
         }

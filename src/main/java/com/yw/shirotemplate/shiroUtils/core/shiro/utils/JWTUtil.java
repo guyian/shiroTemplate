@@ -21,12 +21,7 @@ import java.util.Map;
 @Component
 public class JWTUtil {
     //token过期时间
-    private static String tokenExpireTime ;
-
-    @Value("${jwt.tokenExpireTime}")
-    public void setTokenExpireTime(String tokenExpireTime) {
-        JWTUtil.tokenExpireTime = tokenExpireTime;
-    }
+    private static String tokenExpireTime;
 
     /**
      * 校验token是否正确
@@ -108,6 +103,11 @@ public class JWTUtil {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Value("${jwt.tokenExpireTime}")
+    public void setTokenExpireTime(String tokenExpireTime) {
+        JWTUtil.tokenExpireTime = tokenExpireTime;
     }
 
 }

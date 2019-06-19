@@ -6,7 +6,6 @@ import com.yw.shirotemplate.myShiro.mapper.UserMapper;
 import com.yw.shirotemplate.myShiro.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -16,7 +15,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author Chengx
@@ -25,16 +24,16 @@ import java.util.Map;
 @RestController
 public class UserController {
 
-    @Resource
-    private IUserService userService;
     @Autowired
     UserMapper userMapper;
+    @Resource
+    private IUserService userService;
 
     @RequestMapping("/getList")
-    public List<User> getList(){
+    public List<User> getList() {
         Map map = new HashMap();
-        map.put("start",0);
-        map.put("pageSize",3);
+        map.put("start", 0);
+        map.put("pageSize", 3);
         return userMapper.getAllUser(map);
     }
 

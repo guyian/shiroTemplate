@@ -44,7 +44,7 @@ public class RedisConfiguration {
     }
 
     @Bean(name = "jedisConnectionFactory")
-    public JedisConnectionFactory jedisConnectionFactory(@Qualifier("jedisPoolConfig")JedisPoolConfig jedisPoolConfig) {
+    public JedisConnectionFactory jedisConnectionFactory(@Qualifier("jedisPoolConfig") JedisPoolConfig jedisPoolConfig) {
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
         jedisConnectionFactory.setHostName(host);
         jedisConnectionFactory.setPort(port);
@@ -55,7 +55,7 @@ public class RedisConfiguration {
     }
 
     @Bean(name = "redisTemplate")
-    public RedisTemplate redisTemplate(@Qualifier("jedisConnectionFactory")JedisConnectionFactory jedisConnectionFactory) {
+    public RedisTemplate redisTemplate(@Qualifier("jedisConnectionFactory") JedisConnectionFactory jedisConnectionFactory) {
         RedisTemplate redisTemplate = new RedisTemplate();
         redisTemplate.setConnectionFactory(jedisConnectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer());

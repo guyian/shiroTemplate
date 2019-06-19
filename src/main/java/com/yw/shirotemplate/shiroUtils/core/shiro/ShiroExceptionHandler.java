@@ -19,6 +19,7 @@ public class ShiroExceptionHandler {
 
     /**
      * 未认证异常处理
+     *
      * @return
      */
     @ResponseBody
@@ -29,6 +30,7 @@ public class ShiroExceptionHandler {
 
     /**
      * 未授权异常处理
+     *
      * @return
      */
     @ResponseBody
@@ -39,6 +41,7 @@ public class ShiroExceptionHandler {
 
     /**
      * 捕捉404异常
+     *
      * @return
      */
     @ResponseBody

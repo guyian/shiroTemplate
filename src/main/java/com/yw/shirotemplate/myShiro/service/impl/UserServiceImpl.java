@@ -1,9 +1,9 @@
 package com.yw.shirotemplate.myShiro.service.impl;
 
-import com.yw.shirotemplate.myShiro.mapper.UserMapper;
 import com.yw.shirotemplate.myShiro.entity.Org;
 import com.yw.shirotemplate.myShiro.entity.Role;
 import com.yw.shirotemplate.myShiro.entity.User;
+import com.yw.shirotemplate.myShiro.mapper.UserMapper;
 import com.yw.shirotemplate.myShiro.service.IUserService;
 import com.yw.shirotemplate.shiroUtils.commons.CommonConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,19 +25,16 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class UserServiceImpl implements IUserService {
 
+    @Autowired
+    RedisTemplate redisTemplate;
+    @Autowired
+    UserMapper userMapper;
     //
     @Value("${redis.identifyingTokenExpireTime}")
     private long identifyingTokenExpireTime;
     //redis中jwtToken过期时间
     @Value("${redis.refreshJwtTokenExpireTime}")
     private long refreshJwtTokenExpireTime;
-
-    @Autowired
-    RedisTemplate redisTemplate;
-
-    @Autowired
-    UserMapper userMapper;
-
 
     @Override
     public User findByUserCode(String userCode) {

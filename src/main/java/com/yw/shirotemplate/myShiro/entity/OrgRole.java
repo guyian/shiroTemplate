@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author Chengx
@@ -21,7 +21,7 @@ public class OrgRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer id ;
+    private Integer id;
 
     /**
      * 权限 id
