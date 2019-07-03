@@ -4,28 +4,28 @@
 
     <resultMap type="com.yw.shirotemplate.myShiro.entity.User" id="getMap">
         <id property="id" column="id"/>
-        <result property="userName" column="userName"/>
-        <result property="userCode" column="userCode"/>
-        <result property="userPwd" column="userPwd"/>
-        <result property="userStatus" column="userStatus"/>
+        <result property="userName" column="user_name"/>
+        <result property="userCode" column="user_code"/>
+        <result property="userPwd" column="user_pwd"/>
+        <result property="userStatus" column="user_status"/>
     </resultMap>
 
     <resultMap id="RoleAndOrg" type="com.yw.shirotemplate.myShiro.entity.User">
         <id property="id" column="id"/>
-        <result property="userName" column="userName"/>
-        <result property="userCode" column="userCode"/>
-        <result property="userPwd" column="userPwd"/>
-        <result property="userStatus" column="userStatus"/>
+        <result property="userName" column="user_name"/>
+        <result property="userCode" column="user_code"/>
+        <result property="userPwd" column="user_pwd"/>
+        <result property="userStatus" column="user_status"/>
         <!--  角色 -->
         <collection property="role" ofType="com.yw.shirotemplate.myShiro.entity.Role">
             <id property="id" column="id"></id>
-            <result property="roleCode" column="roleCode"/>
-            <result property="roleName" column="roleName"/>
+            <result property="roleCode" column="role_code"/>
+            <result property="roleName" column="role_name"/>
             <!-- 权限 -->
             <collection property="org" ofType="com.yw.shirotemplate.myShiro.entity.Org">
                 <id property="id" column="id"/>
-                <result property="orgCode" column="orgCode"/>
-                <result property="orgName" column="orgName"/>
+                <result property="orgCode" column="org_code"/>
+                <result property="orgName" column="org_name"/>
             </collection>
         </collection>
     </resultMap>
@@ -33,7 +33,7 @@
     <select id="findByUserCode" parameterType="String" resultMap="getMap">
         SELECT *
         FROM user u
-        WHERE u.userCode = #{userCode};
+        WHERE u.user_code = #{userCode};
     </select>
 
     <select id="getAllUser" parameterType="Map" resultMap="getMap">
@@ -54,17 +54,17 @@
 
 
     <select id="listRolesAndOrg" parameterType="String" resultMap="RoleAndOrg">
-        select u.userName,r.roleName,o.orgName
+        select u.user_name,r.role_name,o.org_name
 		from user u
-		LEFT JOIN user_role ur ON ur.userId = u.id
+		LEFT JOIN user_role ur ON ur.user_id = u.id
 		LEFT JOIN role r on ur.roleId = r.id
-		LEFT JOIN org_role ore ON ore.roleId = r.id
-		LEFT JOIN org o ON o.id = ore.orgId
-		WHERE u.userCode = #{userCode}
+		LEFT JOIN org_role ore ON ore.role_id = r.id
+		LEFT JOIN org o ON o.id = ore.org_id
+		WHERE u.user_code = #{userCode}
     </select>
 
     <select id="listUserByCode" parameterType="String" resultMap="getMap">
-        SELECT * FROM user WHERE userName IN
+        SELECT * FROM user WHERE user_name IN
         <foreach collection="array" open="(" close=")" separator="," item="ele">
             #{ele}
         </foreach>

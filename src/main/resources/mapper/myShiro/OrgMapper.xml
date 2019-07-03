@@ -4,18 +4,18 @@
 
     <resultMap id="resultMap" type="com.yw.shirotemplate.myShiro.entity.Org">
         <id property="id" column="id"/>
-        <result property="orgCode" column="orgCode"/>
-        <result property="orgName" column="orgName"/>
+        <result property="orgCode" column="org_code"/>
+        <result property="orgName" column="org_name"/>
     </resultMap>
 
     <select id="listOrg" parameterType="String" resultType="String">
-		SELECT o.orgName
+		SELECT o.org_name
         FROM user u
-        LEFT JOIN user_role ur ON u.id = ur.userId
-        LEFT JOIN role r ON ur.roleId = r.id
-        LEFT JOIN org_role ore ON r.id = ore.roleId
-        LEFT JOIN org o ON ore.roleId = o.id
-        WHERE u.userCode = #{userCode}
+        LEFT JOIN user_role ur ON u.id = ur.user_id
+        LEFT JOIN role r ON ur.role_id = r.id
+        LEFT JOIN org_role ore ON r.id = ore.role_id
+        LEFT JOIN org o ON ore.role_id = o.id
+        WHERE u.user_code = #{userCode}
 	</select>
 
 </mapper>

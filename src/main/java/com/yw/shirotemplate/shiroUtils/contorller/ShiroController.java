@@ -60,6 +60,7 @@ public class ShiroController {
             result.put("code", CodeAndMsgEnum.ERROR.getcode());
             result.put("msg", "帐号或密码错误！");
         }
+        System.err.println(response);
         return result;
     }
 
